@@ -2,6 +2,7 @@
 const titleElem = document.querySelector("#board");
 console.log("board", titleElem);
 
+// Stage 1 - Game State and Rendering
 // ******************** STATE ***********************
 // Create an initial state
 const state = {};
@@ -26,25 +27,24 @@ function buildInitialState() {
 
 // ************************ DOM SELECTORS ****************
 const boardElem = document.querySelector("#board");
-console.log("boardElem", boardElem);
 function renderBoard() {
+  // empty the element
   boardElem.innerHTML = "";
   for (let i = 0; i < state.board.length; i++) {
     // card for each board
     const card = state.board[i];
     // create div tag for each cell
     const cellElem = document.createElement("div");
-    // create class for each cell
+    // create class for each cell so we can style it and target
+    // it in the click listener
     cellElem.classList.add("cell");
-    cellElem.dataset.index = i;
+    // add the word of the current card
     cellElem.innerText = card;
+    // keep track of the index for future play
+    cellElem.dataset.index = i;
     // add the cellElem to board
     boardElem.appendChild(cellElem);
-    console.log("boardElem", boardElem);
   }
-  //   let randomDiv = document.createElement("div");
-  //   randomDiv.innerText = "RANDOM";
-  //   boardElem.appendChild(randomDiv);
 }
 
 // *********************EVENT LISTENERS *****************
